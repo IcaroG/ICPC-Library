@@ -1,5 +1,5 @@
 vector<pair<int, ii>> edge;
-vector<int> g[ms];
+vector<ii> g[ms];
 
 void kruskal(){
 	sort(edge.begin(), edge.end());
