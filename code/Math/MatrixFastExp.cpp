@@ -1,6 +1,6 @@
 struct Matrix{
 	long long mat[m][m];
-
+    
 	Matrix operator * (const Matrix &p){
 		Matrix ans;
 		for(int i = 0; i < m; ++i){
