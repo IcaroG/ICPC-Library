@@ -15,7 +15,7 @@ void dfs(int v, int p, int l = 0){
 }
 
 int lca(int a, int b){
-	int(lvl[b] > lvl[a]) swap(a, b);
+	if(lvl[b] > lvl[a]) swap(a, b);
 	for(int i = mlg; i >= 0; --i){
 		if(lvl[a] - (1 << i) >= lvl[b]) a = par[a][i];
 	}
