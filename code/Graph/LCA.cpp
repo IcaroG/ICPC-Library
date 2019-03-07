@@ -6,10 +6,10 @@ void dfs(int v, int p, int l = 0){
     par[v][0] = p;
     for(int k = 1; k <= mlg; ++k){
         par[v][k] = par[par[v][k-1]][k-1];
-        }
-        for(int u : g[v]){
-            if(u != p){
-                dfs(u, v, l+1);
+    }
+    for(int u : g[v]){
+        if(u != p){
+            dfs(u, v, l+1);
         }
     }
 }
