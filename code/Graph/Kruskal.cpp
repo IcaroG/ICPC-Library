@@ -6,6 +6,7 @@ void kruskal(){
 
 	for(int i = m - 1; i >= 0; --i){
 		int w = edge[i].first, u = edge[i].second.first, v = edge[i].second.second;
+        
 		if(dsFind(u) != dsFind(v)){
 			dsUnion(u, v);
 			g[u].push_back({v, w});
