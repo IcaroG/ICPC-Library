@@ -18,7 +18,7 @@ struct Node {
 template <class i_t, class e_t>
 class SegmentTree {
 public:
-    void init(std::vector<e_t> base) {
+    void init(vector<e_t> base) {
         n = base.size();
         tree.resize(2 * n);
         for(int i = 0; i < n; i++) {
@@ -48,5 +48,5 @@ public:
 	
 private:
     int n;
-    std::vector<i_t> tree;
+    vector<i_t> tree;
 };
