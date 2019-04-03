@@ -11,7 +11,7 @@ struct Node {
 		// merge
 	}
 
-	// var
+	// attributes
 };
 
 template <class i_t, class e_t>
