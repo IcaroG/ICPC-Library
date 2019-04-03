@@ -1,6 +1,3 @@
-
-#include <vector>
-
 struct Node {
 	Node() {
 		// empty constructor
