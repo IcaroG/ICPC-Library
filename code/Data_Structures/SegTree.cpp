@@ -1,6 +1,6 @@
 struct Node {
 	Node() {
-		// empty constructor
+		// empty
 	}
 	
 	Node(int v) {
