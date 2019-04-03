@@ -47,5 +47,5 @@ public:
 	
 private:
 	int n;
-	std::vector<i_t> tree;
+    std::vector<i_t> tree;
 };
