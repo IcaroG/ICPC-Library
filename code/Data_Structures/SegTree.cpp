@@ -1,6 +1,6 @@
 struct Node {
 	Node() {
-		// empty
+		// empty constructor
 	}
 	
 	Node(int v) {
@@ -11,8 +11,9 @@ struct Node {
 		// merge
 	}
 
-	// attributes
+	// var
 };
+
 
 template <class i_t, class e_t>
 class SegmentTree {
@@ -30,7 +31,7 @@ public:
 	
 	i_t qry(int l, int r) {
 		i_t lp, rp;
-		for(l += n, r += n + 1; l < r; l /= 2, r /= 2) {
+		for(l += n, r += n + 1; l < r; l /= 2, r /= 2) {  // (l, r)
 			if(l & 1) lp = i_t(lp, tree[l++]);
 			if(r & 1) rp = i_t(tree[--r], rp);
 		}
@@ -47,5 +48,5 @@ public:
 	
 private:
 	int n;
-    std::vector<i_t> tree;
+	std::vector<i_t> tree;
 };
