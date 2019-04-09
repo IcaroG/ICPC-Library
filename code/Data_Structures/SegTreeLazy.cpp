@@ -10,7 +10,6 @@ struct LazyContext {
     void operator += (LazyContext o) {
 
     }
-
 };
 
 struct Node {
@@ -29,7 +28,6 @@ struct Node {
     void apply(LazyContext lazy) {
 
     }
-
 };
 
 template <class i_t, class e_t, class lazy_cont = int>
