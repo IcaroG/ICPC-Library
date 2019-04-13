@@ -33,7 +33,7 @@ struct Node {
 template <class i_t, class e_t, class lazy_cont = int>
 class SegmentTree {
 public:
-    void init(std::vector<e_t> base) {
+    void init(vector<e_t> base) {
         n = base.size();
         h = 0;
         while((1 << h) < n) h++;
@@ -42,7 +42,6 @@ public:
         lazy.resize(n);
         for(int i = 0; i < n; i++) {
             tree[i + n] = i_t(base[i]);
-            //cout << i << ' ' << base[i] << endl;
         }
         for(int i = n - 1; i > 0; i--) {
             tree[i] = i_t(tree[i + i], tree[i + i + 1]);
@@ -79,9 +78,9 @@ public:
 
 private:
     int n, h;
-    std::vector<bool> dirty;
-    std::vector<i_t> tree;
-    std::vector<lazy_cont> lazy;
+    vector<bool> dirty;
+    vector<i_t> tree;
+    vector<lazy_cont> lazy;
 
     void apply(int p, lazy_cont &lc) {
         tree[p].apply(lc);
