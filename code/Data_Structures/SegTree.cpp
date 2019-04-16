@@ -14,39 +14,24 @@ struct Node {
     // var
 };
 
+int n;
+int a[ms];
+Node seg[2*ms];
 
-template <class i_t, class e_t>
-class SegmentTree {
-public:
-    void init(vector<e_t> base) {
-        n = base.size();
-        tree.resize(2 * n);
-        for(int i = 0; i < n; i++) {
-            tree[i + n] = i_t(base[i]);
-        }
-        for(int i = n - 1; i > 0; i--) {
-            tree[i] = i_t(tree[i + i], tree[i + i + 1]);
-        }
-    }
+void build() {
+	for(int i = 0; i < n; ++i) seg[i + n] = Node(a[i]);
+ 	for(int i = n - 1; i > 0; --i) seg[i] = Node(seg[i<<1], seg[i<<1|1]); // Merge
+}
 
-    i_t qry(int l, int r) {
-        i_t lp, rp;
-        for(l += n, r += n + 1; l < r; l /= 2, r /= 2) {  // (l, r)
-            if(l & 1) lp = i_t(lp, tree[l++]);
-            if(r & 1) rp = i_t(tree[--r], rp);
-        }
-        return i_t(lp, rp);
-    }
+void update(int p, int value) { // set value at position p
+ 	for(seg[p += n] = value; p > 1; p >>= 1) seg[p>>1] = Node(seg[p], seg[p^1]); // Merge
+}
 
-    void upd(int pos, e_t v) {
-        pos += n;
-        tree[pos] = i_t(v);
-        for(pos /= 2; pos > 0; pos /= 2) {
-            tree[pos] = i_t(tree[pos + pos], tree[pos + pos + 1]);
-        }
-    }
-	
-private:
-    int n;
-    vector<i_t> tree;
-};
+Node query(int l, int r) {
+	Node lp, rp;
+	for(l += n, r += n+1; l < r; l >>= 1, r >>= 1) {
+		if(l&1) lp = Node(lp, seg[l++]); // Merge
+		if(r&1) rp = Node(t[--r], rp); // Merge
+	}
+	return res;
+}
