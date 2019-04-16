@@ -33,5 +33,5 @@ Node query(int l, int r) {
 		if(l&1) lp = Node(lp, seg[l++]); // Merge
 		if(r&1) rp = Node(seg[--r], rp); // Merge
 	}
-	return res;
+	return Node(lp, rp);
 }
