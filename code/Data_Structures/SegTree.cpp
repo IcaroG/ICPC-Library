@@ -31,7 +31,7 @@ Node query(int l, int r) {
 	Node lp, rp;
 	for(l += n, r += n+1; l < r; l >>= 1, r >>= 1) {
 		if(l&1) lp = Node(lp, seg[l++]); // Merge
-		if(r&1) rp = Node(t[--r], rp); // Merge
+		if(r&1) rp = Node(seg[--r], rp); // Merge
 	}
 	return res;
 }
