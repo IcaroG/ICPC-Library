@@ -8,17 +8,14 @@ void dsBuild(){
 }
 
 int dsFind(int i){
-    while(ds[i] != i){
-        ds[i] = ds[ds[i]];
-        i = ds[i];
-    }
-    return i;
+    if(ds[i] != i) return ds[i] = dsFind(ds[i]);
+    return ds[i];
 }
 
 void dsUnion(int a, int b){
     a = dsFind(a);
     b = dsFind(b);
     if(sz[a] < sz[b]) swap(a, b);
-    sz[a] += sz[b];
+    if(a != b) sz[a] += sz[b];
     ds[b] = a;
 }
