@@ -19,8 +19,8 @@ struct PT {
 };
 
 int cmp (double a, double b = 0) {
-	if (abs(a-b) < eps) return 0;
-	return (a < b) ? -1 : +1;
+    if (abs(a-b) < eps) return 0;
+    return (a < b) ? -1 : +1;
 }
 
 double dot (PT p, PT q) { return p.x * q.x + p.y*q.y; }
@@ -32,8 +32,8 @@ PT normalize (PT p) { return p/hypot(p.x, p.y); }
 double angle (PT p, PT q) { return atan2(cross(p, q), dot(p, q)); }
 double angle (PT p) { return atan2(p.y, p.x); }
 double polarAngle (PT p) {
-	double a = atan2(p.y,p.x);
-	return a < 0 ? a + 2*PI : a;
+    double a = atan2(p.y,p.x);
+    return a < 0 ? a + 2*PI : a;
 }
 
 // - p.y*sen(+90), p.x*sen(+90)
@@ -42,13 +42,13 @@ PT rotateCCW90 (PT p) { return PT(-p.y, p.x); }
 PT rotateCW90 (PT p) { return PT(p.y, -p.x); }
 
 PT rotateCCW (PT p, double t) {
-	return PT(p.x*cos(t)-p.y*sin(t), p.x*sin(t)+p.y*cos(t));
+    return PT(p.x*cos(t)-p.y*sin(t), p.x*sin(t)+p.y*cos(t));
 }
 
 // a.b = |a| cost * |b|
 //ponto c
 PT projectPointLine (PT a, PT b, PT c) {
-	return a + (b-a) * dot(b-a, c-a)/dot(b-a, b-a);
+    return a + (b-a) * dot(b-a, c-a)/dot(b-a, b-a);
 }
 
 PT reflectPointLine (PT a, PT b, PT c) {
@@ -66,14 +66,14 @@ PT projectPointSegment (PT a, PT b, PT c) {
 }
 
 double distancePointSegment (PT a, PT b, PT c) {
-	return dist(c, projectPointSegment(a, b, c));
+    return dist(c, projectPointSegment(a, b, c));
 }
 
 // Parallel and opposite directions
 bool ptInSegment (PT a, PT b, PT c) {
-	if (a == b) return a == c;
-	a = a-c, b = b-c;
-	return cmp(cross(a, b)) == 0 && cmp(dot(a, b)) <= 0;
+    if (a == b) return a == c;
+    a = a-c, b = b-c;
+    return cmp(cross(a, b)) == 0 && cmp(dot(a, b)) <= 0;
 }
 
 bool parallel (PT a, PT b, PT c, PT d) {
@@ -195,6 +195,18 @@ vector<PT> circleLine (PT a, PT b, PT c, double r) {
     return ret;
 }
 
+vector<PT> circleCircle (PT a, double r, PT b, double R) {
+	vector<PT> ret;
+	double d = norm(a-b);
+	if (d > r + R || d + min(r, R) < max(r, R)) return ret;
+	double x = (d*d - R*R + r*r) / (2*d); // x = r*cos(R opposite angle)
+	double y = sqrt(r*r - x*x);
+	PT v = (b - a)/d;
+	ret.push_back(a + v*x + rotateCCW90(v)*y);
+	if (cmp(y) > 0)
+		ret.push_back(a + v*x - rotateCCW90(v)*y);
+	return ret;
+}
 
 double computeSignedArea (const vector<PT> &p) {
     double area = 0;
