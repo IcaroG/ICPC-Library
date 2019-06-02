@@ -3,6 +3,7 @@ const double PI = acos(-1.0L);
 
 struct PT {
     double x, y;
+    PT() : x(0), y(0) {}
     PT(double x = 0, double y = 0) : x(x), y(y) {}
     PT operator + (const PT &p) const { return PT(x+p.x, y+p.y); }
     PT operator - (const PT &p) const { return PT(x-p.x, y-p.y); }
