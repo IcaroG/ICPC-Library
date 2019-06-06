@@ -4,7 +4,7 @@ struct L {
     L(PT a, PT b) : a(a), b(b) {}
 };
 
-double angle(const L la) { return atan2(-(la.a.y - la.b.y), la.b.x - la.a.x); }
+double angle(L la) { return atan2(-(la.a.y - la.b.y), la.b.x - la.a.x); }
 
 bool comp(L la, L lb){       
     if (cmp(angle(la), angle(lb)) == 0) return cross((lb.b - lb.a), (la.b - lb.a)) > eps;
