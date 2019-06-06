@@ -1,4 +1,4 @@
-vector<PT> cutPolygon(vector<PT> Q, PT a, PT b){
+vector<PT> cutPolygon (vector<PT> Q, PT a, PT b) {
     PT vec = normalize(rotateCW90((b-a)));
     vector<PT> resp;
     for(int i=0; i<Q.size(); i++){
