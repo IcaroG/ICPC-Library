@@ -1,25 +1,25 @@
 struct L {
-	PT a, b;
-	L(){}
-	L(PT a, PT b) : a(a), b(b) {}
+    PT a, b;
+    L(){}
+    L(PT a, PT b) : a(a), b(b) {}
 };
 
 double angle(const L la) { return atan2(-(la.a.y - la.b.y), la.b.x - la.a.x); }
 
 
 bool comp(L la, L lb){       
-	if (cmp(angle(la), angle(lb)) == 0) return cross((lb.b - lb.a), (la.b - lb.a)) > eps;
+    if (cmp(angle(la), angle(lb)) == 0) return cross((lb.b - lb.a), (la.b - lb.a)) > eps;
     return cmp(angle(la), angle(lb)) < 0;
 }
 
 PT computeLineIntersection(L a, L b){
-	return computeLineIntersection(a.a, a.b, b.a, b.b);
+    return computeLineIntersection(a.a, a.b, b.a, b.b);
 }
 
 bool check(L l1, L l2, L l3) {
     PT p = computeLineIntersection(l2, l3);
     double det = cross((l1.b - l1.a),  (p - l1.a));
-	return cmp(det) < 0;
+    return cmp(det) < 0;
 }
 
 vector<PT> hpi(vector<L> line) { // salvar (i, j) CCW, (j, i) CW
