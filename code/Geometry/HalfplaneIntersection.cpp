@@ -11,13 +11,13 @@ bool comp(L la, L lb){
     return cmp(angle(la), angle(lb)) < 0;
 }
 
-PT computeLineIntersection(L a, L b){
-    return computeLineIntersection(a.a, a.b, b.a, b.b);
+PT computeLineIntersection(L la, L lb){
+    return computeLineIntersection(la.a, la.b, lb.a, lb.b);
 }
 
-bool check(L l1, L l2, L l3) {
-    PT p = computeLineIntersection(l2, l3);
-    double det = cross((l1.b - l1.a),  (p - l1.a));
+bool check(L la, L lb, L lc) {
+    PT p = computeLineIntersection(lb, lc);
+    double det = cross((la.b - la.a),  (p - la.a));
     return cmp(det) < 0;
 }
 
