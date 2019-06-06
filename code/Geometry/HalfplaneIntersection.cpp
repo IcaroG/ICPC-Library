@@ -4,24 +4,24 @@ struct L {
     L(PT a, PT b) : a(a), b(b) {}
 };
 
-double angle(L la) { return atan2(-(la.a.y - la.b.y), la.b.x - la.a.x); }
+double angle (L la) { return atan2(-(la.a.y - la.b.y), la.b.x - la.a.x); }
 
-bool comp(L la, L lb){       
+bool comp (L la, L lb) {       
     if (cmp(angle(la), angle(lb)) == 0) return cross((lb.b - lb.a), (la.b - lb.a)) > eps;
     return cmp(angle(la), angle(lb)) < 0;
 }
 
-PT computeLineIntersection(L la, L lb){
+PT computeLineIntersection (L la, L lb) {
     return computeLineIntersection(la.a, la.b, lb.a, lb.b);
 }
 
-bool check(L la, L lb, L lc) {
+bool check (L la, L lb, L lc) {
     PT p = computeLineIntersection(lb, lc);
     double det = cross((la.b - la.a),  (p - la.a));
     return cmp(det) < 0;
 }
 
-vector<PT> hpi(vector<L> line) { // salvar (i, j) CCW, (j, i) CW
+vector<PT> hpi (vector<L> line) { // salvar (i, j) CCW, (j, i) CW
     sort(line.begin(), line.end(), comp);
     vector<L> pl(1, line[0]);
     for (int i = 0; i < (int)line.size(); ++i) if (cmp(angle(line[i]), angle(pl.back())) != 0) pl.push_back(line[i]);
