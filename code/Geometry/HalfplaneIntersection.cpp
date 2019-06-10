@@ -39,6 +39,6 @@ vector<PT> hpi (vector<L> line) { // salvar (i, j) CCW, (j, i) CW
     for (int i = 0; i < (int)dq.size(); ++i){
         res.emplace_back(computeLineIntersection(pl[dq[i]], pl[dq[(i + 1) % dq.size()]]));
     }
-    return res;
+    return res; // condicao checar res.size() > 2
 }
  
