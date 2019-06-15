@@ -7,10 +7,11 @@ void build_automaton(string s){
 	}
 	pre[0][s[0] - 'A'] = 1;
 	int fail = 0;
-	for(int i = 1; i < n; ++i){
+	for(int i = 1; i <= n; ++i){
 		for(int j = 0; j < limit; ++j){
 			pre[i][j] = pre[fail][j];
 		}
+		if(i == n) continue;
 		pre[i][s[i] - 'A'] = i + 1;
 		fail = pre[fail][s[i] - 'A'];
 	}
