@@ -1,30 +1,17 @@
 int pre[ms][limit];
-int fail[ms];
 
 void build_automaton(string s){
-    s += '#'; //diferente de todos caracteres
-    int n = (int) s.size();
-    for(int i = 0; i < n; ++i){
-        for(int j = 0; j < limit; ++j){
-            if(i == 0){
-                if(s[i] == j + 'a'){
-                    pre[i][j] = i + 1;
-                }else{
-                    pre[i][j] = 0;
-                }
-            }else{
-                if(s[i] == j + 'a'){
-                    pre[i][j] = i + 1;
-                }else{
-                    pre[i][j] = pre[fail[i - 1]][j];
-                }
-            }
-        }
-        if(i == 0) continue;
-        int j = fail[i - 1];
-        while(j > 0 && s[i] != s[j]) {
-            j = fail[j - 1];
-        }
-        fail[i] = j + (s[i] == s[j]);
-    }
+	int n = (int) s.size();
+	for(int i = 0; i < limit; ++i){
+		pre[0][i] = 0;
+	}
+	pre[0][s[0] - 'A'] = 1;
+	int fail = 0;
+	for(int i = 1; i < n; ++i){
+		for(int j = 0; j < limit; ++j){
+			pre[i][j] = pre[fail][j];
+		}
+		pre[i][s[i] - 'A'] = i + 1;
+		fail = pre[fail][s[i] - 'A'];
+	}
 }
