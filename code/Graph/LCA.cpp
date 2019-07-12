@@ -1,7 +1,7 @@
 int par[ms][mlg + 1], lvl[ms];
 vector<int> g[ms];
 
-void dfs(int v, int p, int l = 0){
+void dfs(int v, int p, int l = 0){ // chamar dfs(parent, parent)
     lvl[v] = l;
     par[v][0] = p;
     for(int k = 1; k <= mlg; ++k){
