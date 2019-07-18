@@ -77,7 +77,7 @@ void build(int p) {
     }
 }
 
-Node query(int l, int r) {
+Node qry(int l, int r) {
     if(l > r) return Node();
     l += n, r += n+1;
     push(l);
@@ -90,7 +90,7 @@ Node query(int l, int r) {
     return Node(lp, rp);
 }
 
-void update(int l, int r, LazyContext lc) {
+void upd(int l, int r, LazyContext lc) {
     if(l > r) return;
     l += n, r += n+1;
     push(l);
