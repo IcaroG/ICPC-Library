@@ -1,6 +1,11 @@
 const double inf = 1e100, eps = 1e-9;
 const double PI = acos(-1.0L);
 
+int cmp (double a, double b = 0) {
+    if (abs(a-b) < eps) return 0;
+    return (a < b) ? -1 : +1;
+}
+
 struct PT {
     double x, y;
     PT(double x = 0, double y = 0) : x(x), y(y) {}
@@ -10,18 +15,13 @@ struct PT {
     PT operator / (double c) const { return PT(x/c, y/c); }
 
     bool operator <(const PT &p) const {
-        if(abs(x - p.x) >= eps) return x < p.x;
-        return abs(y - p.y) >= eps && y < p.y;
+        if(cmp(x, p.x) != 0) return x < p.x;
+        return cmp(y, p.y) < 0;
     }
     bool operator ==(const PT &p) const {
-        return !(*this < p || p < *this);
+        return (cmp(x, p.x) || cmp(y, p.y));
     }
 };
-
-int cmp (double a, double b = 0) {
-    if (abs(a-b) < eps) return 0;
-    return (a < b) ? -1 : +1;
-}
 
 double dot (PT p, PT q) { return p.x * q.x + p.y*q.y; }
 double cross (PT p, PT q) { return p.x * q.y - p.y*q.x; }
