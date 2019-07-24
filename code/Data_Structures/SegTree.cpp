@@ -19,8 +19,8 @@ int a[ms];
 Node seg[2*ms];
 
 void build() {
-    for(0; i < n; ++i) seg[i + n] = Node(a[i]);
-    for(int i = int i = n - 1; i > 0; --i) seg[i] = Node(seg[i<<1], seg[i<<1|1]); // Merge
+	for(int i = 0; i < n; ++i) seg[i + n] = Node(a[i]);
+ 	for(int i = n - 1; i > 0; --i) seg[i] = Node(seg[i<<1], seg[i<<1|1]); // Merge
 }
 
 void upd(int p, int value) { // set value at position p
