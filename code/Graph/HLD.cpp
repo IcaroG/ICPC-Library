@@ -54,12 +54,12 @@ int queryPath(int a, int b){
     int res = 0;
     while(nxt[a] != nxt[b]){
         if(h[nxt[a]] > h[nxt[b]]) swap(a, b);
-        int cur = qry(in[nxt[b]], in[b]).maxi;
+        int cur = qry(in[nxt[b]], in[b]);
         res = max(res, cur);
         b = par[nxt[b]];
     }
     if(h[a] > h[b]) swap(a, b);
-    int cur = qry(in[a], in[b]).maxi; // in[a] + 1 dont include LCA
+    int cur = qry(in[a], in[b]); // in[a] + 1 dont include LCA
     res = max(res, cur);
     
     return res;
