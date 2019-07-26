@@ -1,4 +1,3 @@
-
 int adj[ms], to[me], ant[me], z;
 int num[ms], low[ms], timer;
 int art[ms], bridge[me], rch;
