@@ -15,18 +15,18 @@ void sieve(){
 
 //O(nloglogn)
 void sieve(){
-	prime.push_back(2);
-	for(int i = 4; i<ms; i += 2){
-		notPrime[i] = true;
-	}
-	for(ll i = 3; i<ms; i += 2){
-		if(!notPrime[i]){
-			prime.push_back(i);
-			for(ll j = i*i; j < ms; j += i+i){
-				notPrime[j] = true;
-			}
-		}
-	}
+    prime.push_back(2);
+    for(int i = 4; i<ms; i += 2){
+        notPrime[i] = true;
+    }
+    for(ll i = 3; i<ms; i += 2){
+        if(!notPrime[i]){
+            prime.push_back(i);
+            for(ll j = i*i; j < ms; j += i+i){
+                notPrime[j] = true;
+            }
+        }
+    }
 }
 
 vector<int> fact(int x){
@@ -34,13 +34,13 @@ vector<int> fact(int x){
     int idx = 0, pf = prime[idx];
     while(pf * pf <= x){
         while(x%pf == 0){
-			x /= pf;
-			ans.push_back(pf);
-		}
-		pf = prime[++idx];
+            x /= pf;
+            ans.push_back(pf);
+        }
+        pf = prime[++idx];
     }
-	if(x != 1){
-		ans.push_back(x);
-	}
-	return ans;
+    if(x != 1){
+        ans.push_back(x);
+    }
+    return ans;
 }
