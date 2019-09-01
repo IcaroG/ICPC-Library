@@ -7,12 +7,11 @@ int gauss (vector<vector<double>> a, vector<double> & ans) {
     vector<int> where (m, -1);
     for (int col=0, row=0; col<m && row<n; ++col) {
         int sel = row;
-        for (int i=row; i<n; ++i)
+        for (int i=row; i<n; ++i){
             if (abs (a[i][col]) > abs (a[sel][col]))
                 sel = i;
-        
+        }
         if (abs (a[sel][col]) < eps) continue;
-
         for (int i=col; i<=m; ++i)
             swap (a[sel][i], a[row][i]);
         where[col] = row;
@@ -49,11 +48,12 @@ int gauss (vector <bitset<ms>> a, int m) {
     int n = (int) a.size();
     vector<int> where (m, -1);
     for (int col=0, row=0; col<m && row<n; ++col) {
-        for (int i=row; i<n; ++i)
+        for (int i=row; i<n; ++i){
             if (a[i][col]) {
                 swap (a[i], a[row]);
                 break;
             }
+        }
         if (!a[row][col]) continue;
         where[col] = row;
         for (int i=0; i<n; ++i){
