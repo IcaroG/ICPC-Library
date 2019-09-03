@@ -214,7 +214,7 @@ double computeSignedArea (const vector<PT> &p) {
         int j = (i+1) % p.size();
         area += p[i].x*p[j].y - p[j].x*p[i].y;
     }
-    return area;
+    return area / 2.0;
 }
 
 double computeArea (const vector<PT> &p) {
