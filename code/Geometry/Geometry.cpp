@@ -19,7 +19,7 @@ struct PT {
         return cmp(y, p.y) < 0;
     }
     bool operator ==(const PT &p) const {
-        return (cmp(x, p.x) || cmp(y, p.y));
+        return (cmp(x, p.x) || cmp(y, p.y)) == 0;
     }
 };
 
