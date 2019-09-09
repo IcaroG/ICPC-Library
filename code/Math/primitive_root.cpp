@@ -9,7 +9,7 @@ int fexp(int x, int y, int p){
   return ans;
 }
 // If p has a primitive root, then there are phi(phi(p)) primitives roots of p
-int get(int p) {
+int primitiveRoot(int p) {
   vector<int> factors;
   int phi = p - 1; // phi(n)
   int n = phi;
