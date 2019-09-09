@@ -10,6 +10,6 @@ for(int i = 0;i < N; ++i){
 
 // Submasks
 for (int s=m; ; s=(s-1)&m) {
-    ... you can use s ...
+  
     if (s==0)  break;
 }
