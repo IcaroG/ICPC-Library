@@ -25,3 +25,13 @@ Matrix fExp(Matrix a, long long b){
     }
     return ans;
 }
+
+
+// precompute
+for(int k = 1;k <= 62;k++){
+    memcpy(T[k], T[k-1], sizeof(T[k-1]));
+    T[k] = T[k] * T[k];
+}
+for(int i = 0; i < 63 && (1LL<<i) <= N; i++){
+	if(N&(1LL<<i)) S = S * T[i];
+}
