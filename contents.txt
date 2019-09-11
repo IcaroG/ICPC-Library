@@ -41,7 +41,7 @@ Math/DiscreteLog.cpp	Discrete Logarithm
 Math/DiscreteRoot.cpp	Discrete Root
 Math/PrimitiveRoot.cpp	Primitive Root
 Math/DivisionTrick.cpp	Primitive Root
-Math/Prime.cpp	Extended Euclides
+Math/Prime.cpp	Prime Functions
 Math/MatrixFastExp.cpp	Matrix Fast Exponentiation
 Math/FFT.cpp	FFT - Fast Fourier Transform
 Math/NTT.cpp	NTT - Number Theoretic Transform
