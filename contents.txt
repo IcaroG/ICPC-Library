@@ -5,28 +5,28 @@
 # tab character:	
 
 [Data Structures]
-Data_Structures/BIT.cpp		BIT - Binary Indexed Tree
-Data_Structures/BIT2D.cpp	BIT 2D Comprimida
-Data_Structures/SegTree.cpp		Iterative Segment Tree
+Data_Structures/BIT.cpp BIT - Binary Indexed Tree
+Data_Structures/BIT2D.cpp BIT 2D Comprimida
+Data_Structures/SegTree.cpp Iterative Segment Tree
 Data_Structures/SegTreeLazy.cpp	Iterative Segment Tree with Lazy Propagation
 Data_Structures/SegTreeLazyRecursive.cpp	Segment Tree with Lazy Propagation
-Data_Structures/SparseTable.cpp		Sparse Table
-Data_Structures/PolicyBased.cpp		Policy Based Structures
+Data_Structures/SparseTable.cpp Sparse Table
+Data_Structures/PolicyBased.cpp Policy Based Structures
 Data_Structures/MaxQueue.cpp	Max Queue
-Data_Structures/ColorUpdate.cpp		Color Updates Structure
+Data_Structures/ColorUpdate.cpp Color Update
 Data_Structures/KDTree.cpp	KD-Tree
 Data_Structures/MergeSortTree.cpp	Merge Sort Tree
 
 [Graph Algorithms]
 Graph/UnionSet.cpp	Simple Disjoint Set
-Graph/Dinic.cpp		Dinic Max Flow
+Graph/Dinic.cpp Dinic Max Flow
 Graph/VertexCover.cpp	Minimum Vertex Cover
 Graph/MinCostMaxFlow.cpp	Min Cost Max Flow
 Graph/Biconnected.cpp	Articulation Points/Bridges/Biconnected Components
 Graph/SCC.cpp	SCC - Strongly Connected Components / 2SAT
 Graph/LCA.cpp	LCA - Lowest Common Ancestor
 Graph/HLD.cpp	Heavy Light Decomposition
-Graph/CentroidDecomposition.cpp		Centroid Decomposition
+Graph/CentroidDecomposition.cpp Centroid Decomposition
 Graph/Matching.cpp	Match Algorithm Biparite
 Graph/Hungarian.cpp	Hungarian Algorithm - Maximum Cost Matching
 
