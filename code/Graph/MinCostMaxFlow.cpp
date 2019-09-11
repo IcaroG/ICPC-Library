@@ -1,86 +1,114 @@
-#include <bits/stdc++.h>
-
-using namespace std;
-const int INF = 1e9 + 7;
-
-struct Edge{
-  int from, to, capacity, cost;
-  Edge(int from, int to, int capacity, int cost) : from(from), to(to), capacity(capacity), cost(cost) {}
-};
-
-vector<Edge> edges;
-vector<vector<int>> adj, cost, capacity;
-
-void shortest_paths(int n, int s, vector<int>& d, vector<int>& p) {
-  d.assign(n, INF);
-  d[s] = 0;
-  vector<int> m(n, 2);
-  deque<int> q;
-  q.push_back(s);
-  p.assign(n, -1);
-  
-  while (!q.empty()) {
-    int u = q.front();
-    q.pop_front();
-    m[u] = 0;
-    for (int v : adj[u]) {
-      if (capacity[u][v] > 0 && d[v] > d[u] + cost[u][v]) {
-        d[v] = d[u] + cost[u][v];
-        p[v] = u;
-        if (m[v] == 2) {
-          m[v] = 1;
-          q.push_back(v);
-        } else if (m[v] == 0) {
-          m[v] = 1;
-          q.push_front(v);
+template <class T = int>
+class MCMF {
+public:
+    struct Edge {
+        Edge(int a, T b, T c) : to(a), cap(b), cost(c) {}
+        int to;
+        T cap, cost;
+    };
+    MCMF(int size) {
+        n = size;
+        edges.resize(n);
+        pot.assign(n, 0);
+        dist.resize(n);
+        visit.assign(n, false);
+    }
+    pair<T, T> mcmf(int src, int sink) {
+        pair<T, T> ans(0, 0);
+        if(!SPFA(src, sink)) return ans;
+        fixPot();
+        // can use dijkstra to speed up depending on the graph
+        while(SPFA(src, sink)) {
+            auto flow = augment(src, sink);
+            ans.first += flow.first;
+            ans.second += flow.first * flow.second;
+            fixPot();
         }
-      }
+        return ans;
     }
-  }
-}
-
-int min_cost_flow(vector<Edge> edges, int K, int s, int t) {
-  int N = edges.size();
-  adj.assign(N, vector<int>());
-  cost.assign(N, vector<int>(N, 0));
-  capacity.assign(N, vector<int>(N, 0));
-  for (Edge e : edges) {
-    adj[e.from].push_back(e.to);
-    adj[e.to].push_back(e.from);
-    cost[e.from][e.to] = e.cost;
-    cost[e.to][e.from] = -e.cost;
-    capacity[e.from][e.to] = e.capacity;
-  }
-
-  int flow = 0;
-  int cost = 0;
-  vector<int> d, p;
-  while (flow < K) {
-    shortest_paths(N, s, d, p);
-    if (d[t] == INF) break;
-
-    int f = K - flow;
-    int cur = t;
-    while (cur != s) {
-      f = min(f, capacity[p[cur]][cur]);
-      cur = p[cur];
+    void addEdge(int from, int to, T cap, T cost) {
+        edges[from].push_back(list.size());
+        list.push_back(Edge(to, cap, cost));
+        edges[to].push_back(list.size());
+        list.push_back(Edge(from, 0, -cost));
     }
-
-    flow += f;
-    cost += f * d[t];
-    cur = t;
-    while (cur != s) {
-      capacity[p[cur]][cur] -= f;
-      capacity[cur][p[cur]] += f;
-      cur = p[cur];
+private:
+    int n;
+    vector<vector<int>> edges;
+    vector<Edge> list;
+    vector<int> from;
+    vector<T> dist, pot;
+    vector<bool> visit;
+    /*bool dij(int src, int sink) {
+        T INF = numeric_limits<T>::max();
+        dist.assign(n, INF);
+        from.assign(n, -1);
+        visit.assign(n, false);
+        dist[src] = 0;
+        for(int i = 0; i < n; i++) {
+            int best = -1;
+            for(int j = 0; j < n; j++) {
+                if(visit[j]) continue;
+                if(best == -1 || dist[best] > dist[j]) best = j;
+            }
+            if(dist[best] >= INF) break;
+            visit[best] = true;
+            for(auto e : edges[best]) {
+                auto ed = list[e];
+                if(ed.cap == 0) continue;
+                T toDist = dist[best] + ed.cost + pot[best] - pot[ed.to];
+                assert(toDist >= dist[best]);
+                if(toDist < dist[ed.to]) {
+                    dist[ed.to] = toDist;
+                    from[ed.to] = e;
+                }
+            }
+        }
+        return dist[sink] < INF;
+    }*/
+    pair<T, T> augment(int src, int sink) {
+        pair<T, T> flow = {list[from[sink]].cap, 0};
+        for(int v = sink; v != src; v = list[from[v]^1].to) {
+            flow.first = min(flow.first, list[from[v]].cap);
+            flow.second += list[from[v]].cost;
+        }
+        for(int v = sink; v != src; v = list[from[v]^1].to) {
+            list[from[v]].cap -= flow.first;
+            list[from[v]^1].cap += flow.first;
+        }
+        return flow;
     }
-  }
-  
-  if (flow < K) return -1;
-  else return cost;
-}
-
-int main() {
-  
-  return 0;
-}
+    queue<int> q;
+    bool SPFA(int src, int sink) {
+        T INF = numeric_limits<T>::max();
+        dist.assign(n, INF);
+        from.assign(n, -1);
+        q.push(src);
+        dist[src] = 0;
+        while(!q.empty()) {
+            int on = q.front();
+            q.pop();
+            visit[on] = false;
+            for(auto e : edges[on]) {
+                auto ed = list[e];
+                if(ed.cap == 0) continue;
+                T toDist = dist[on] + ed.cost + pot[on] - pot[ed.to];
+                if(toDist < dist[ed.to]) {
+                    dist[ed.to] = toDist;
+                    from[ed.to] = e;
+                    if(!visit[ed.to]) {
+                        visit[ed.to] = true;
+                        q.push(ed.to);
+                    }
+                }
+            }
+        }
+        return dist[sink] < INF;
+    }
+    void fixPot() {
+        T INF = numeric_limits<T>::max();
+        for(int i = 0; i < n; i++) {
+            if(dist[i] < INF) pot[i] += dist[i];
+        }
+    }
+};
