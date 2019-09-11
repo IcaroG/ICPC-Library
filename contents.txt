@@ -40,7 +40,7 @@ Math/Diophantine.cpp	Diophantine Equations
 Math/DiscreteLog.cpp	Discrete Logarithm
 Math/DiscreteRoot.cpp	Discrete Root
 Math/PrimitiveRoot.cpp	Primitive Root
-Math/DivisionTrick.cpp	Primitive Root
+Math/DivisionTrick.cpp	Division Trick
 Math/Prime.cpp	Prime Functions
 Math/MatrixFastExp.cpp	Matrix Fast Exponentiation
 Math/FFT.cpp	FFT - Fast Fourier Transform
