@@ -1,4 +1,4 @@
-// by tfg
+// src: tfg50
 template <class T, class C = less<T>>
 struct MaxQueue {
     MaxQueue() {
@@ -29,6 +29,12 @@ struct MaxQueue {
             id++;
         }
     }
+
+    bool empty() {
+        if(id == q.size()) return true;
+        return false;
+    }
+
 private:
     vector<pair<int, T>> q;
     int id;
