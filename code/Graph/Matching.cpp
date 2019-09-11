@@ -1,8 +1,4 @@
 // ADACITY - Matching
-
-#include <bits/stdc++.h>
-
-using namespace std;
 const int INF = 0x3f3f3f3f;
 const int MAXN = 500 + 7;
 
@@ -35,42 +31,4 @@ void clear() {
     adj[i][i] = 0;
   }
   memset(match, -1, sizeof(match));
-}
-
-int main() {
-  int tc;
-  cin >> tc;
-  while(tc--) {
-    cin >> n >> m >> f >> t;
-    clear();
-    for(int i = 1; i <= f; i++) {
-      cin >> friends[i];   
-    }
-    for(int i = 1; i <= m; i++) {
-      int u, v, w;
-      cin >> u >> v >> w;
-      adj[u][v] = min(adj[u][v], w);
-      adj[v][u] = min(adj[v][u], w);
-    }
-    for(int k = 1; k <= n; k++) {
-      for(int i = 1; i <= n; i++) {
-        for(int j = 1;j <= n; j++) {
-          adj[i][j] = min(adj[i][j], adj[i][k] + adj[k][j]);
-        }
-      }
-    }
-    for(int i = 1; i <= f; i++) {
-      for(int j = 1; j <= n; j++) {
-        if(adj[friends[i]][j] <= t) {
-          v[i].push_back(j);
-        }
-      }
-    }
-    int ans = 0;
-    for(int i = 1; i <= f; i++) {
-      memset(vis, false, sizeof(vis));
-      ans += solve(i);
-    }
-    cout << ans << '\n';
-  }
 }
