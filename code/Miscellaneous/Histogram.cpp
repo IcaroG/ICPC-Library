@@ -1,12 +1,3 @@
-#include<bits/stdc++.h>
-
-using namespace std;
-
-/*
-  Solution to the histogram problem in O(n)
-  https://www.geeksforgeeks.org/largest-rectangle-under-histogram/
-*/
- 
 int getMaxArea(int hist[], int n) {
   stack<int> s; 
   int max_area = 0;
