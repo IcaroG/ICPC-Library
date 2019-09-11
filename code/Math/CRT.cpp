@@ -1,5 +1,3 @@
-#include<bits/stdc++.h>
-using namespace std;
 const long long N = 20;
 
 long long GCD(long long a, long long b) { 

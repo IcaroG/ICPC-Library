@@ -1,4 +1,3 @@
-//by gabrielpessoa
 double closestPair(vector<PT> p) {
     int n = p.size(), k = 0;
     sort(p.begin(), p.end());

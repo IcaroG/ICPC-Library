@@ -1,4 +1,3 @@
-//by gabrielpessoa
 bool comp(PT a, PT b){
     int hp1 = (a.x < 0 || (a.x==0 && a.y<0));
     int hp2 = (b.x < 0 || (b.x==0 && b.y<0));

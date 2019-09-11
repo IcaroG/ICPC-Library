@@ -7,15 +7,15 @@
 [Data Structures]
 Data_Structures/BIT.cpp		BIT - Binary Indexed Tree
 Data_Structures/BIT2D.cpp	BIT 2D Comprimida
-Data_Structures/SegmentTree.cpp		Iterative Segment Tree
-Data_Structures/SegmentTreeLazy.cpp	Iterative Segment Tree with Lazy Propagation
-Data_Structures/SegmentTreeLazyRecursive.cpp	Segment Tree with Lazy Propagation
+Data_Structures/SegTree.cpp		Iterative Segment Tree
+Data_Structures/SegTreeLazy.cpp	Iterative Segment Tree with Lazy Propagation
+Data_Structures/SegTreeLazyRecursive.cpp	Segment Tree with Lazy Propagation
 Data_Structures/SparseTable.cpp		Sparse Table
 Data_Structures/PolicyBased.cpp		Policy Based Structures
 Data_Structures/MaxQueue.cpp	Max Queue
 Data_Structures/ColorUpdate.cpp		Color Updates Structure
 Data_Structures/KDTree.cpp	KD-Tree
-Data_Structures/MergeSortTree.cpp 	Merge Sort Tree
+Data_Structures/MergeSortTree.cpp	Merge Sort Tree
 
 [Graph Algorithms]
 Graph/UnionSet.cpp	Simple Disjoint Set
@@ -77,6 +77,6 @@ Miscellaneous/Mo's.cpp	Mo Algorithm
 Miscellaneous/AngularSweep.cpp	Angular Sweep
 
 [Teoremas e formulas uteis]
-Theorems/Graph.txt	Grafos
-Theorems/Math.txt	Math
-Theorems/Geometry.txt	Geometry
+Theorem/Graph.txt	Grafos
+Theorem/Math.txt	Math
+Theorem/Geometry.txt	Geometry
