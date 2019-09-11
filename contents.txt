@@ -1,0 +1,82 @@
+# Any line followed by a '#' character is ignored
+# Section headings must be in square brackets
+# Subsections within a section should follow the format:
+#   [filename within code directory][tab character \t][subsection title]
+# tab character:	
+
+[Data Structures]
+Data_Structures/BIT.cpp		BIT - Binary Indexed Tree
+Data_Structures/BIT2D.cpp	BIT 2D Comprimida
+Data_Structures/SegmentTree.cpp		Iterative Segment Tree
+Data_Structures/SegmentTreeLazy.cpp	Iterative Segment Tree with Lazy Propagation
+Data_Structures/SegmentTreeLazyRecursive.cpp	Segment Tree with Lazy Propagation
+Data_Structures/SparseTable.cpp		Sparse Table
+Data_Structures/PolicyBased.cpp		Policy Based Structures
+Data_Structures/MaxQueue.cpp	Max Queue
+Data_Structures/ColorUpdate.cpp		Color Updates Structure
+Data_Structures/KDTree.cpp	KD-Tree
+Data_Structures/MergeSortTree.cpp 	Merge Sort Tree
+
+[Graph Algorithms]
+Graph/UnionSet.cpp	Simple Disjoint Set
+Graph/Dinic.cpp		Dinic Max Flow
+Graph/VertexCover.cpp	Minimum Vertex Cover
+Graph/MinCostMaxFlow.cpp	Min Cost Max Flow
+Graph/Biconnected.cpp	Articulation Points/Bridges/Biconnected Components
+Graph/SCC.cpp	SCC - Strongly Connected Components / 2SAT
+Graph/LCA.cpp	LCA - Lowest Common Ancestor
+Graph/HLD.cpp	Heavy Light Decomposition
+Graph/CentroidDecomposition.cpp		Centroid Decomposition
+Graph/Matching.cpp	Match Algorithm Biparite
+Graph/Hungarian.cpp	Hungarian Algorithm - Maximum Cost Matching
+
+[Dynamic Programming]
+DP/CHT.cpp	CHT
+DP/SOSDP.cpp	SOSDP
+
+[Math]
+Math/CRT.cpp	Chinese Remainder Theorem
+Math/Diophantine.cpp	Diophantine Equations
+Math/DiscreteLog.cpp	Discrete Logarithm
+Math/DiscreteRoot.cpp	Discrete Root
+Math/PrimitiveRoot.cpp	Primitive Root
+Math/DivisionTrick.cpp	Primitive Root
+Math/Prime.cpp	Extended Euclides
+Math/MatrixFastExp.cpp	Matrix Fast Exponentiation
+Math/FFT.cpp	FFT - Fast Fourier Transform
+Math/NTT.cpp	NTT - Number Theoretic Transform
+Math/DetMod.cpp	Determinant using Mod
+Math/Gauss.cpp	Gauss Elimination
+Math/Spf.cpp	SPF
+
+[Geometry]
+Geometry/Geometry.cpp	Geometry
+Geometry/ConvexHull.cpp	Convex Hull
+Geometry/CutPolygon.cpp	Cut Polygon
+Geometry/Circle.cpp	Smallest Enclosing Circle
+Geometry/Minkowski.cpp	Minkowski
+Geometry/HalfplaneIntersection.cpp	Half Plane Intersection
+Geometry/ClosestPair.cpp	Closest Pair
+Geometry/MaxScalar.cpp	Maximum Scalar Point-Poly
+
+
+[String Algorithms]
+String/KMP.cpp	KMP
+String/Kmp_Automaton.cpp	KMP Automaton
+String/Trie.cpp	Trie
+String/Aho-Corasick.cpp	Aho-Corasick
+String/Z_Algo.cpp	Algoritmo de Z
+String/Suffix-Array.cpp	Suffix Array
+
+[Miscellaneous]
+Miscellaneous/TernarySearch.cpp	Ternary Search
+Miscellaneous/Random.cpp	Random Number Generator
+Miscellaneous/Date.cpp	Dates
+Miscellaneous/Histogram.cpp	Max Histogram
+Miscellaneous/Mo's.cpp	Mo Algorithm
+Miscellaneous/AngularSweep.cpp	Angular Sweep
+
+[Teoremas e formulas uteis]
+Theorems/Graph.txt	Grafos
+Theorems/Math.txt	Math
+Theorems/Geometry.txt	Geometry
