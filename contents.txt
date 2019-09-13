@@ -63,9 +63,10 @@ Geometry/MaxScalar.cpp	Maximum Scalar Point-Poly
 [String Algorithms]
 String/KMP.cpp	KMP
 String/Kmp_Automaton.cpp	KMP Automaton
+String/Z_Algo.cpp	Algoritmo de Z
+String/Hash.cpp Hash
 String/Trie.cpp	Trie
 String/Aho-Corasick.cpp	Aho-Corasick
-String/Z_Algo.cpp	Algoritmo de Z
 String/Suffix-Array.cpp	Suffix Array
 
 [Miscellaneous]
