@@ -12,6 +12,7 @@ void clear () {
     memset(pv, 0, sizeof pv);
     memset(way, 0, sizeof way);
     memset(cost, 0x3f, sizeof cost);
+    memset(cost[0], 0, sizeof cost[0]);
 }
 
 void hungarian () { 
