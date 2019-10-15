@@ -11,8 +11,7 @@ void clear () {
     memset(pu, 0, sizeof pu);
     memset(pv, 0, sizeof pv);
     memset(way, 0, sizeof way);
-    memset(cost, 0, sizeof cost); // remember to change (0 for max, 0x3f for min)
-    memset(cost[0], 0, sizeof cost[0]);
+    memset(cost, 0x3f, sizeof cost);
 }
 
 void hungarian () { 
