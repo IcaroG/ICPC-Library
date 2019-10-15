@@ -2,7 +2,6 @@
 const int INF = 0x3f3f3f3f;
 const int MAXN = 2009, MAXM = 2009;
 
-int n, m;
 int pu[MAXN], pv[MAXN], cost[MAXN][MAXM];
 int pairV[MAXM], way[MAXM], minv[MAXM];  //pairV[i] = id of worker assigned to do job i or 0
 bool used[MAXM];
@@ -15,7 +14,7 @@ void clear () {
     memset(cost[0], 0, sizeof cost[0]);
 }
 
-void hungarian () { 
+void hungarian (int n, int m) { 
     memset(pairV, 0, sizeof pairV);
     for (int i = 1, j0 = 0; i <=n; i++) {
         pairV[0] = i;
