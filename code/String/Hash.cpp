@@ -7,7 +7,7 @@ int n;
 ll h[ms], p[ms];
 string s;
 
-ll getkey(int l, int r){ // (l, r)
+ll getkey(int l, int r){ // [l, r]
     int res = h[r];
     if(l > 0) res = ((res - p[r - l + 1] * h[l-1]) % MOD + MOD) % MOD;
     return res;
