@@ -4,8 +4,9 @@ int idx[ms], low[ms], z, comp[ms], ncomp, n;
 stack<int> st;
 // Operacoes comuns de 2-sat
 int NOT(int x) { return x < n ? x + n : x - n; }
-void addImp(int a, int b) { g[a].push_back(b); }
-void addOr(int a, int b) { addImp(NOT(a), b); addImp(NOT(b), a); }
+void add(int a, int b) { g[a].push_back(b); }
+void addOr(int a, int b) { add(NOT(a), b); add(NOT(b), a); }
+void addImp(int a, int b) { addOr(NOT(a), b); }
 void addEqual(int a, int b) { addOr(a, NOT(b)); addOr(NOT(a), b); }
 void addDiff(int a, int b) { addEqual(a, NOT(b)); }
 // valoracao: value[v] = comp[trad(v)] < comp[trad(~v)]
