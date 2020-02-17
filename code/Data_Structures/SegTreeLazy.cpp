@@ -33,11 +33,11 @@ struct Node {
 Node tree[2*ms];
 LazyContext lazy[ms];
 bool dirty[ms];
-int n, h, a[ms];
+int n, lg, a[ms];
 
 void init() {
-    h = 0;
-    while((1 << h) < n) h++;
+    lg = 0;
+    while((1 << lg) < n) lg++;
     for(int i = 0; i < n; i++) {
         tree[i + n] = Node(a[i]);
     }
@@ -57,7 +57,7 @@ void apply(int p, LazyContext &lc) {
 }
 
 void push(int p) {
-    for(int s = h; s > 0; s--) {
+    for(int s = lg; s > 0; s--) {
         int i = p >> s;
         if(dirty[i]) {
             apply(i + i, lazy[i]);
