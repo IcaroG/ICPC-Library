@@ -1,23 +1,23 @@
-int par[ms][mlg + 1], lvl[ms];
+int par[ms][mlg + 1], h[ms];
 vector<int> g[ms];
 
-void dfs(int v, int p, int l = 0){ // chamar dfs(parent, parent)
-    lvl[v] = l;
+void dfs(int v, int p){ // chamar dfs(parent, parent)
     par[v][0] = p;
     for(int k = 1; k <= mlg; ++k){
         par[v][k] = par[par[v][k-1]][k-1];
     }
     for(auto u : g[v]){
         if(u != p){
+            h[u] = h[v] + 1;
             dfs(u, v, l+1);
         }
     }
 }
 
 int lca(int a, int b){
-    if(lvl[b] > lvl[a]) swap(a, b);
+    if(h[b] > h[a]) swap(a, b);
     for(int i = mlg; i >= 0; --i){
-        if(lvl[a] - (1 << i) >= lvl[b]) a = par[a][i];
+        if(h[a] - (1 << i) >= h[b]) a = par[a][i];
     }
 
     if(a == b) return a;
