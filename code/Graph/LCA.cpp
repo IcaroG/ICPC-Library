@@ -9,7 +9,7 @@ void dfs(int v, int p){ // chamar dfs(parent, parent)
     for(auto u : g[v]){
         if(u != p){
             h[u] = h[v] + 1;
-            dfs(u, v, l+1);
+            dfs(u, v);
         }
     }
 }
