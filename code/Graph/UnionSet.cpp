@@ -8,13 +8,13 @@ void init(){
 }
 
 int find(int i){
-    if(ds[i] != i) return ds[i] = dsFind(ds[i]);
+    if(ds[i] != i) return ds[i] = find(ds[i]);
     return ds[i];
 }
 
 void join(int a, int b){
-    a = dsFind(a);
-    b = dsFind(b);
+    a = find(a);
+    b = find(b);
     if(sz[a] < sz[b]) swap(a, b);
     if(a != b) sz[a] += sz[b];
     ds[b] = a;
