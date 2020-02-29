@@ -20,11 +20,11 @@ int dfs(int u) {
     }
     if(low[u] == idx[u]) {
         while(st.top() != u) {
-        int v = st.top();
-        idx[v] = 0;
-        low[v] = low[u];
-        comp[v] = ncomp;
-        st.pop();
+            int v = st.top();
+            idx[v] = 0;
+            low[v] = low[u];
+            comp[v] = ncomp;
+            st.pop();
         }
         idx[st.top()] = 0;
         st.pop();
