@@ -4,7 +4,7 @@ int arr[ms], lisArr[ms], n;
 int lis(){
     int len = 1;
     lisArr[0] = arr[0];
-    //bef[0] = -1;//
+    //bef[0] = -1;
     for (int i = 1; i < n; i++){
         // upper_bound se non-decreasing
         int x = lower_bound(lisArr, lisArr+len, arr[i]) - lisArr;
