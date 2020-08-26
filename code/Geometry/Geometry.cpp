@@ -63,8 +63,8 @@ PT projectPointSegment (PT a, PT b, PT c) {
     double r = dot(b-a, b-a);
     if (cmp(r) == 0) return a;
     r = dot(b-a, c-a)/r;
-    if (cmp(r, 0) == 0) return a;
-    if (cmp(r, 1) == 0) return b;
+    if (cmp(r, 0) < 0) return a;
+    if (cmp(r, 1) > 0) return b;
     return a + (b - a) * r;
 }
 
