@@ -1,11 +1,20 @@
+const int mod = 1e9 + 7;
+const int mx = 205;
+
 struct Matrix{
-    long long mat[m][m];
+    int sz;
+    vector<vector<int>> mat;
+
+    Matrix(int _sz = 0) {
+        sz = _sz;
+        mat = vector<vector<int>>(sz, vector<int>(sz, 0));
+    }
 
     Matrix operator * (const Matrix &p){
-        Matrix ans;
-        for(int i = 0; i < m; ++i){
-            for(int j = 0; j < m; ++j){
-                for(int k = ans.mat[i][j] = 0; k < m; ++k){
+        Matrix ans(sz);
+        for(int i = 0; i < sz; ++i){
+            for(int j = 0; j < sz; ++j){
+                for(int k = ans.mat[i][j] = 0; k < sz; ++k){
                     ans.mat[i][j] = (ans.mat[i][j] + (mat[i][k] * p.mat[k][j]) % mod) % mod;
                 }
             }
@@ -15,8 +24,8 @@ struct Matrix{
 };
 
 Matrix fExp(Matrix a, long long b){
-    Matrix ans;
-    for(int i = 0; i < m; ++i) for(int j = 0; j < m; ++j) ans.mat[i][j] = (i == j);
+    Matrix ans(a.sz);
+    for(int i = 0; i < a.sz; ++i) for(int j = 0; j < a.sz; ++j) ans.mat[i][j] = (i == j);
 
     while(b){
         if(b & 1) ans = ans * a;
@@ -25,7 +34,6 @@ Matrix fExp(Matrix a, long long b){
     }
     return ans;
 }
-
 
 // precompute
 for(int k = 1;k <= 62;k++){
