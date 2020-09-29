@@ -117,18 +117,16 @@ bool ptInsideTriangle(PT p, PT a, PT b, PT c) {
     if(!z) return ptInSegment(c,a,p);
     return false;
 }
-
 // Determina se o ponto esta num poligono convexo em O(lgn)
 bool pointInConvexPolygon(const vector<PT> &p, PT q) {
-    PT pivot = p[0];
-    int x = 1, y = p.size();
-    while(y-x != 1) {
-        int z = (x+y)/2;
-        PT diagonal = pivot - p[z];
-        if(cross(p[x] - pivot, q - pivot) * cross(q-pivot, p[z] - pivot) >= 0) y = z;
-        else x = z;
-    }
-    return ptInsideTriangle(q, p[x], p[y], pivot);
+  if (p.size() == 1) return p.front() == q;
+  int l = 1, r = p.size()-1;
+  while(abs(r-l) > 1) {
+    int m = (r+l)/2;
+    if(cross(p[m]-p[0] , q-p[0]) < 0) r = m;
+    else l = m;
+  }
+  return ptInsideTriangle(q, p[0], p[l], p[r]);
 }
 
 // Determina se o ponto esta num poligono possivelmente nao-convexo
