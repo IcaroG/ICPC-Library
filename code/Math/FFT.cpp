@@ -72,6 +72,32 @@ CVector fft(CVector a, bool inv = false) {
 	return a;
 }
 
+vector<int> mul(const vector<int> &a, const vector<int> &b) {
+	int n = 1;
+	while (n - 1 < (int) a.size() + (int) b.size() - 2) n += n;
+	CVector poly(n);
+	for(int i = 0; i < n; i++) {
+		if(i < (int) a.size()) {
+			poly[i].real = a[i];
+		}
+		if(i < (int) b.size()) {
+			poly[i].imag = b[i];
+		}
+	}
+	poly = fft(poly);
+	for(int i = 0; i < n; i++) {
+		poly[i] *= poly[i];
+	}
+	poly = fft(poly, true);
+	vector<int> c(n, 0);
+	for(int i = 0; i < n; i++) {
+		c[i] = (int) (poly[i].imag / 2 + 0.5);
+	}
+	while (c.size() > 0 && c.back() == 0) c.pop_back();
+	return c;
+}
+
+
 void fft2in1(CVector &a, CVector &b) {
 	int n = (int) a.size();
 	for(int i = 0; i < n; i++) {
@@ -128,29 +154,4 @@ vector<long long> mod_mul(const vector<long long> &a, const vector<long long> &b
 		ans[i] += (long long) (C[3][i].real + 0.5) * cut * cut;
 	}
 	return ans;
-}
-
-vector<int> mul(const vector<int> &a, const vector<int> &b) {
-	int n = 1;
-	while (n - 1 < (int) a.size() + (int) b.size() - 2) n += n;
-	CVector poly(n);
-	for(int i = 0; i < n; i++) {
-		if(i < (int) a.size()) {
-			poly[i].real = a[i];
-		}
-		if(i < (int) b.size()) {
-			poly[i].imag = b[i];
-		}
-	}
-	poly = fft(poly);
-	for(int i = 0; i < n; i++) {
-		poly[i] *= poly[i];
-	}
-	poly = fft(poly, true);
-	vector<int> c(n, 0);
-	for(int i = 0; i < n; i++) {
-		c[i] = (int) (poly[i].imag / 2 + 0.5);
-	}
-	while (c.size() > 0 && c.back() == 0) c.pop_back();
-	return c;
 }
