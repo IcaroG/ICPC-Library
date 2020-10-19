@@ -2,6 +2,10 @@ struct LazyContext {
     LazyContext() {
 
     }
+    
+    LazyContext(long long c) {
+        
+    }
 
     void reset() {
 
@@ -17,7 +21,7 @@ struct Node {
 
     }
 
-    Node(ll c) {
+    Node(long long c) {
 
     }
 
