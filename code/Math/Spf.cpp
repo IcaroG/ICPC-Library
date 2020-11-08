@@ -3,7 +3,7 @@ int spf[MAXN];
 // Complexity: O(nloglogn)
 void sieve() {
   spf[1] = 1;
-  for (int i = 2; i * i < MAXN; i++) {
+  for (int i = 2; i < MAXN; i++) {
     if (!spf[i]) {
       for (int j = i; j < MAXN; j += i) {
         if (!spf[j]) spf[j] = i;
