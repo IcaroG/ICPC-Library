@@ -3,8 +3,7 @@ int mob[mv];
 bool prime[mv];
 
 void mobius() {
-  memset(mob, 1, sizeof mob);
-  memset(prime, true, sizeof prime);
+	for(int i = 1; i < mv; ++i) mob[i] = 1, prime[i] = true;
 	for(int i = 2; i < mv; i++) {
 		if(!prime[i])
 			continue;
