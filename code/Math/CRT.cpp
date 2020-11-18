@@ -1,22 +1,22 @@
 const long long N = 20;
 
-long long GCD(long long a, long long b) { 
-  return (b == 0) ? a : GCD(b, a % b); 
+long long GCD(long long a, long long b) {
+  return (b == 0) ? a : GCD(b, a % b);
 }
-inline long long get_LCM(long long a, long long b) { 
-  return a / GCD(a, b) * b; 
+inline long long get_LCM(long long a, long long b) {
+  return a / GCD(a, b) * b;
 }
-inline long long normalize(long long x, long long mod) { 
-  x %= mod; 
-  if (x < 0) x += mod; 
-  return x; 
+inline long long normalize(long long x, long long mod) {
+  x %= mod;
+  if(x < 0) x += mod;
+  return x;
 }
 
-struct GCD_type { 
-  long long x, y, d; 
+struct GCD_type {
+  long long x, y, d;
 };
-GCD_type ex_GCD(long long a, long long b){
-  if (b == 0) return {1, 0, a};
+GCD_type ex_GCD(long long a, long long b) {
+  if(b == 0) return {1, 0, a};
   GCD_type pom = ex_GCD(b, a % b);
   return {pom.y, pom.x - a / b * pom.y, pom.d};
 }
@@ -49,8 +49,10 @@ int main() {
       ans = normalize(ans + x1 * (a[i] - ans) / d % (n[i] / d) * LCM, LCM * n[i] / d);
       LCM = get_LCM(LCM, n[i]);
     }
-    if (impossible) cout << "no solution\n";
-    else cout << ans << " " << LCM << endl;
+    if(impossible)
+      cout << "no solution\n";
+    else
+      cout << ans << " " << LCM << endl;
   }
   return 0;
 }

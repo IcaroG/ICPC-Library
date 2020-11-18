@@ -25,7 +25,7 @@ void clear() {
     v[i].clear();
   }
   for(int i = 1; i <= MAXN; i++) {
-    for(int j = 1;j <= MAXN; j++) {
+    for(int j = 1; j <= MAXN; j++) {
       adj[i][j] = INF;
     }
     adj[i][i] = 0;
