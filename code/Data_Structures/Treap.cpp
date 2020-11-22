@@ -55,7 +55,7 @@ void split(pitem t, pitem& l, pitem& r, int key) {
   if(key <= cur_key)
     split(t->l, l, t->l, key), r = t;
   else
-    split(t->r, t->r, r, key - (1 + cnt(t->l))), l = t;
+    split(t->r, t->r, r, key - (1 + cnt(t->l))), l = t;  // key if not implicit
   fix(t);
 }
 
@@ -68,7 +68,9 @@ void reverse(pitem t, int l, int r) {
   merge(t, t, t3);
 }
 
-void unite(pitem& t, pitem l, pitem r) {
+void unite(pitem& t, pitem l, pitem r) {  // all elements should be different
+  pushLazy(l);
+  pushLazy(r);
   if(!l || !r) return void(t = l ? l : r);
   if(l->prio < r->prio) swap(l, r);
   pitem lt, rt;
@@ -76,4 +78,5 @@ void unite(pitem& t, pitem l, pitem r) {
   unite(l->l, l->l, lt);
   unite(l->r, l->r, rt);
   t = l;
+  fix(t);
 }
