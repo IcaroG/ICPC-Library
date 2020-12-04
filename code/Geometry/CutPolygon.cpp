@@ -1,5 +1,5 @@
 vector<PT> cutPolygon(vector<PT> Q, PT a, PT b) {  // reta a b
-  PT vec = normalize(rotateCW90((b - a)));
+  PT vec = normalize(rotateCW90((b - a)));  // rotateCW90 / rotateCCW90
   vector<PT> resp;
   for(int i = 0; i < Q.size(); i++) {
     int j = (i + 1) % Q.size();
