@@ -5,11 +5,10 @@ struct Node{
 	Node *l = this, *r = this;
 };
 
-int n;
 int CNT = 1;
 Node buffer[ms * 20];
  
-Node* update(Node *root, int idx, int val, int l = 0, int r = n){
+Node* update(Node *root, int idx, int val, int l = 0, int r = mn){
 	Node *node = &buffer[CNT++];
 	*node = *root;
 	int mid = (l + r) / 2;
@@ -21,7 +20,7 @@ Node* update(Node *root, int idx, int val, int l = 0, int r = n){
 	return node;
 }
  
-int query(Node *node, int l, int r, int tl = 0, int tr = n){
+int query(Node *node, int l, int r, int tl = 0, int tr = mn){
 	if(l <= tl && tr <= r) return node->v;
 	if(tr <= l || tl >= r) return 0;
 	int mid = (tl+tr) / 2;
