@@ -2,20 +2,6 @@ vector<int> g[ms];
 int idx[ms], low[ms], z, comp[ms], ncomp, n;
 
 stack<int> st;
-// Operacoes comuns de 2-sat
-int NOT(int x) { return x < n ? x + n : x - n; }
-void add(int a, int b) { g[a].push_back(b); }
-void addOr(int a, int b) {
-  add(NOT(a), b);
-  add(NOT(b), a);
-}
-void addImp(int a, int b) { addOr(NOT(a), b); }
-void addEqual(int a, int b) {
-  addOr(a, NOT(b));
-  addOr(NOT(a), b);
-}
-void addDiff(int a, int b) { addEqual(a, NOT(b)); }
-// valoracao: value[v] = comp[trad(v)] < comp[trad(~v)]
 
 int dfs(int u) {
   if(~idx[u]) return idx[u] ? idx[u] : z;
@@ -38,6 +24,21 @@ int dfs(int u) {
   }
   return low[u];
 }
+
+// Operacoes comuns de 2-sat
+int NOT(int x) { return x < n ? x + n : x - n; }
+void add(int a, int b) { g[a].push_back(b); }
+void addOr(int a, int b) {
+  add(NOT(a), b);
+  add(NOT(b), a);
+}
+void addImp(int a, int b) { addOr(NOT(a), b); }
+void addEqual(int a, int b) {
+  addOr(a, NOT(b));
+  addOr(NOT(a), b);
+}
+void addDiff(int a, int b) { addEqual(a, NOT(b)); }
+// valoracao: value[v] = comp[trad(v)] < comp[trad(~v)]
 
 bool solveSat() {
   memset(idx, -1, sizeof idx);
