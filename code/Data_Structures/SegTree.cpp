@@ -24,7 +24,7 @@ void build() {
 }
 
 void upd(int p, int value) {                                                              // set value at position p
-  for(seg[p += n] = Node(value); p > 1; p >>= 1) seg[p >> 1] = Node(seg[p], seg[p ^ 1]);  // Merge
+  for(seg[p += n] = Node(value); p > 1; p >>= 1) seg[p >> 1] = Node(seg[min(p, p ^ 1)], seg[max(p, p ^ 1)]);  // Merge
 }
 
 Node qry(int l, int r) {
