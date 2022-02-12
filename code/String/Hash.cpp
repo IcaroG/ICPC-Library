@@ -1,6 +1,6 @@
 struct StringHashing {
   const uint64_t MOD = (1LL << 61) - 1;
-  const int base = 28;
+  const int base = 31;
   vector<uint64_t> h, p;
 
   uint64_t modMul(uint64_t a, uint64_t b) {
