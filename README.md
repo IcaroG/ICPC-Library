@@ -1,2 +1,1 @@
-# Maratona
-Biblioteca para algoritmos
+# ICPC Library
